@@ -1,7 +1,6 @@
-/* ====== Fonts ====== */
+
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;700&display=swap");
 
-/* ====== Reset & Base ====== */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,7 @@ body {
   overflow: hidden;
 }
 
-/* ====== Intro Screen ====== */
+  
 .intro-container {
   width: 100vw;
   height: 100vh;
@@ -45,7 +44,7 @@ body {
   }
 }
 
-/* ====== Floating Glow Particles ====== */
+
 .intro-container::before,
 .intro-container::after {
   content: "";
@@ -82,7 +81,7 @@ body {
   z-index: 1;
 }
 
-/* ====== Typing Title Tagline ====== */
+
 .tagline {
   font-size: 2rem;
   font-weight: bold;
@@ -112,7 +111,7 @@ body {
   }
 }
 
-/* ====== Glowing Start Button ====== */
+
 .start-button {
   font-size: 1.3rem;
   font-weight: bold;
@@ -132,7 +131,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ====== Fade In Animation ====== */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -144,7 +143,7 @@ body {
   }
 }
 
-/* ====== Loader (Optional) ====== */
+
 .loader-container {
   display: flex;
   justify-content: center;
@@ -168,7 +167,7 @@ body {
   }
 }
 
-/* ====== Game Scene Canvas ====== */
+
 .game-canvas {
   width: 100vw;
   height: 100vh;
