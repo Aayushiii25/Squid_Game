@@ -14,7 +14,7 @@ export default function Game({ onGameOver }) {
   const animationIdRef = useRef(null);
   const spacePressed = useRef(false);
 
-  // Handle key events for movement
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.code === "Space" || e.key === "ArrowUp") {
@@ -60,7 +60,7 @@ export default function Game({ onGameOver }) {
     const loader = new GLTFLoader();
     const fontLoader = new FontLoader();
 
-    // Adjusted model positions
+
     const modelPaths = [
       {
         path: "/models/background.glb",
@@ -126,7 +126,7 @@ export default function Game({ onGameOver }) {
 
     modelPaths.forEach(loadModel);
 
-    // Create FINISH text
+    
     fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
       const textGeometry = new TextGeometry("FINISH", {
         font: font,
@@ -137,7 +137,7 @@ export default function Game({ onGameOver }) {
       const textMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
       const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
-      // Position text above finish line
+     
       textGeometry.center();
       textMesh.position.set(0, 2, 38);
       textMesh.rotation.x = -Math.PI / 8;
@@ -145,7 +145,7 @@ export default function Game({ onGameOver }) {
       scene.add(textMesh);
     });
 
-    // Red line (Finish line)
+
     const redMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
     const points = [
       new THREE.Vector3(-20, 0, 38),
@@ -155,7 +155,7 @@ export default function Game({ onGameOver }) {
     const redLine = new THREE.Line(redGeometry, redMaterial);
     scene.add(redLine);
 
-    // Position camera behind player
+   
     camera.position.set(0, 3.5, -5);
     camera.lookAt(0, 1, 0);
 
@@ -171,20 +171,20 @@ export default function Game({ onGameOver }) {
         walkTime += 0.15;
         player.position.y = 0.05 * Math.sin(walkTime);
 
-        // Move camera with player
+     
         camera.position.z = player.position.z - 5;
         camera.position.y = player.position.y + 2;
         camera.position.x = player.position.x;
         camera.lookAt(player.position.x, player.position.y, player.position.z);
 
-        // Win condition
+        
         if (player.position.z >= 37) {
           cancelAnimationFrame(id);
           onGameOver("won");
         }
       }
 
-      // Rotate doll
+
       if (dollModel) {
         dollModel.rotation.y += 0.03;
       }
@@ -203,7 +203,7 @@ export default function Game({ onGameOver }) {
     };
   }, []);
 
-  // Game light cycle
+
   useEffect(() => {
     if (!player) return;
 
@@ -213,16 +213,16 @@ export default function Game({ onGameOver }) {
       setStatus(next ? "Green Light" : "Red Light");
 
       if (next) {
-        // Green light
+        
         new Audio("/sounds/squidgame.mp3").play();
       } else {
-        // Red light
+       
         new Audio("/sounds/gunshotlaser.mp3").play();
 
         setTimeout(() => {
           new Audio("/sounds/laser-scan.mp3").play();
 
-          // Check if player moved during red light
+          
           if (spacePressed.current) {
             new Audio("/sounds/squid-game-gunshot.mp3").play();
 
